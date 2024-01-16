@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-export default () =>
+export default () => {
+  const URL = `mongodb+srv://${process.env.DB_LOGIN}:${process.env.DB_MDP}@db.tounu.mongodb.net/relationnal`;
   mongoose
-    .connect(
-      `mongodb+srv://${process.env.DB_LOGIN}:${process.env.DB_LOGIN}>@db.tounu.mongodb.net`
-    )
+    .connect(URL)
     .then(console.log('Successfuly connected to mongoDB Atlas'))
     .catch(err => {
       console.log(err.message);
       process.exit(1);
     });
+};
